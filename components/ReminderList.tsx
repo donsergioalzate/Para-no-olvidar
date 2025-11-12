@@ -50,7 +50,7 @@ const ReminderList: React.FC<ReminderListProps> = ({ reminders }) => {
                   {formatReminderDate(reminder.date)}
                 </p>
                 <p className="text-sm text-slate-500 dark:text-slate-400">
-                  Recordatorio Misterioso
+                  Categoría: {reminder.name}
                 </p>
               </div>
             </div>

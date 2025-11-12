@@ -21,8 +21,8 @@ const App: React.FC = () => {
     setSelectedDate(date);
   };
 
-  const handleAddReminder = (date: Date, icon: string) => {
-    const newReminder: Reminder = { date: formatDateISO(date), icon };
+  const handleAddReminder = (date: Date, category: { name: string, icon: string }) => {
+    const newReminder: Reminder = { date: formatDateISO(date), icon: category.icon, name: category.name };
     if (!remindersMap.has(newReminder.date)) {
       setReminders([...reminders, newReminder].sort((a, b) => a.date.localeCompare(b.date)));
     }
@@ -130,7 +130,7 @@ const App: React.FC = () => {
         <ReminderModal
           date={selectedDate}
           reminder={remindersMap.get(formatDateISO(selectedDate))}
-          onAdd={(icon: string) => handleAddReminder(selectedDate, icon)}
+          onAdd={(category: { name: string; icon: string }) => handleAddReminder(selectedDate, category)}
           onRemove={() => handleRemoveReminder(selectedDate)}
           onClose={() => setSelectedDate(null)}
         />
